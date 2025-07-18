@@ -37,7 +37,6 @@ const Page=({params})=>{
     try{
       const res=await fetch(`/api/blog/update/${params.id}`,{
         method:'PUT',
-        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({title,author,tags,imageURL,content})
       })
       const result=await res.json()

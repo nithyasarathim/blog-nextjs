@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useSession } from 'next-auth/react'
-import Image from 'next/image'
 
 const Page = () => {
     const {data:session} = useSession();

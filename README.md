@@ -1,1 +1,1 @@
-The application is deployed https://devnotes-cyan.vercel.app/
+The application is deployed https://devnotes-cyan.v ercel.app/
