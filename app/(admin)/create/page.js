@@ -3,14 +3,20 @@
 import React,{useState} from 'react'
 import {useRouter} from 'next/navigation'
 import UnsupportedImg from '@/public/unsupportedImg.png'
+import { useSession } from 'next-auth/react'
 
 const Page=()=>{
+  const {data:session}=useSession();
   const router=useRouter()
   const [title,setTitle]=useState('')
   const [author,setAuthor]=useState('')
   const [tags,setTags]=useState([])
   const [imageURL,setImageURL]=useState('')
   const [content,setContent]=useState('')
+
+  if(!session){
+    router.push("/");
+  }
 
   const handleSubmit=async(e)=>{
     e.preventDefault()

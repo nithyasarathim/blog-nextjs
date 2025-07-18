@@ -12,7 +12,6 @@ const Page=()=>{
 
   useEffect(()=>{
     if(!session){
-      alert("Login to continue");
       router.push('/');
     }
     const fetchBlogs=async()=>{

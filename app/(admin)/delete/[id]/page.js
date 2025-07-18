@@ -2,13 +2,19 @@
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
 const Page=({params})=>{
+  const {data:session}=useSession();
   const router=useRouter()
   const [post,setPost]=useState(null)
   const [error,setError]=useState('')
 
   useEffect(()=>{
+    if(!session){
+      router.push("/");
+    }
+    
     const fetchPost=async()=>{
       try {
         const res=await fetch(`/api/blog/${params.id}`)
