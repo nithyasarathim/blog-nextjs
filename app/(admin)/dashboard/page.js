@@ -2,12 +2,19 @@
 
 import React,{useState,useEffect} from 'react'
 import Link from 'next/link'
-
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const Page=()=>{
-  const [blogs,setBlogs]=useState([])
+  const router=useRouter();
+  const {data:session}=useSession();
+  const [blogs,setBlogs]=useState([]);
 
   useEffect(()=>{
+    if(!session){
+      alert("Login to continue");
+      router.push('/');
+    }
     const fetchBlogs=async()=>{
       try{
         const res=await fetch('/api/blog')
